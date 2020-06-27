@@ -1,0 +1,2 @@
+ErrorDocument 404 /seite-nicht-gefunden/index.html
+ErrorDocument 500 /interner-fehler/index.html
