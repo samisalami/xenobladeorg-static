@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" media="all" href="/css/style.css?ver=01" />
     <link rel="stylesheet" type="text/css" media="all" href="/css/jquery-ui-1.10.3.custom.min.css" />
     <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <title>Xenoblade.org | Harmoniegespräche</title>
+        <title>Harmoniegespräche | Xenoblade.org </title>
 </head>
 <body>
 <div id="page">
@@ -181,14 +181,22 @@
                 <li>
                     <a href="#">Extras</a>
                     <ul class="sub-menu">
-                        <li>
+                        
+<li>
+    <a href="/extras/trophaen/">Trophäen</a>
+</li>
+<li>
     <a href="/extras/harmonie-gesprache/">Harmoniegespräche</a>
 </li>
                     </ul>
                 </li>
             </ul>
                 <ul class="submenu-rv">
-        <li>
+        
+<li>
+    <a href="/extras/trophaen/">Trophäen</a>
+</li>
+<li>
     <a href="/extras/harmonie-gesprache/">Harmoniegespräche</a>
 </li>
     </ul>
@@ -224,7 +232,98 @@
                                                     <div></div>
                                                 
 
-<table class="guide-table" align="center">
+<script>
+    function Filter() {
+      var table, tr, i;
+      personInput = document.getElementById("personInput");
+      chapterInput = document.getElementById("chapterInput");
+      harmonyInput = document.getElementById("harmonyInput");
+      personFilter = personInput.value.toUpperCase();
+      chapterFilter = chapterInput.value.toUpperCase();
+      harmonyFilter = harmonyInput.value.toUpperCase();
+      table = document.getElementById("myTable");
+      tr = table.getElementsByTagName("tr");
+
+      // Hide all rows not matching the input
+      // We want to skip the first table row (table head), so we start at i = 1
+      for (i = 1; i < tr.length; i++) {
+        personTd = tr[i].getElementsByTagName("td")[4];
+        harmonyTd = tr[i].getElementsByTagName("td")[5];
+        chapterTd = tr[i].getElementsByTagName("td")[6];
+
+        if (personTd && chapterTd && harmonyTd) {
+          if (    personTd.innerHTML.toUpperCase().indexOf( personFilter) > -1
+              && chapterTd.innerHTML.toUpperCase().indexOf(chapterFilter) > -1
+              && harmonyTd.innerHTML.toUpperCase().indexOf(harmonyFilter) > -1
+             ) {
+                tr[i].style.display = "";
+           } else {
+                tr[i].style.display = "none";
+           }
+         }
+      }
+    }
+</script>
+
+
+<noscript>
+    <div style="visibility: hidden">
+</noscript>
+
+<strong>Filter:</strong><br />
+(Wähle einen oder mehrere Filter)<br />
+<br />
+
+<label for="person">Person:</label>
+<select name="person" id="personInput" onchange="Filter()">
+    <option value="">Bitte wählen</option>
+            <option value="Shulk">Shulk</option>
+            <option value="Reyn">Reyn</option>
+            <option value="Fiora">Fiora</option>
+            <option value="Sharla">Sharla</option>
+            <option value="Dunban">Dunban</option>
+            <option value="Melia">Melia</option>
+            <option value="Riki">Riki</option>
+            <option value="Person 7">Person 7</option>
+    </select>
+
+<label for="chapter">Abschnitt:</label>
+<select name="chapter" id="chapterInput" onchange="Filter()">
+    <option value="">Bitte wählen</option>
+            <option value="Kolonie 9">Kolonie 9</option>
+            <option value="Tephra-Höhle">Tephra-Höhle</option>
+            <option value="Bein des Bionis">Bein des Bionis</option>
+            <option value="Kolonie 6">Kolonie 6</option>
+            <option value="Äthermine">Äthermine</option>
+            <option value="Sumpf von Satorl">Sumpf von Satorl</option>
+            <option value="Inneres des Bionis">Inneres des Bionis</option>
+            <option value="Wald von Makna">Wald von Makna</option>
+            <option value="Grenzdorf">Grenzdorf</option>
+            <option value="Eryth-Meer">Eryth-Meer</option>
+            <option value="Alcamoth">Alcamoth</option>
+            <option value="Gruft der Hochentia">Gruft der Hochentia</option>
+            <option value="Berg Valak">Berg Valak</option>
+            <option value="Gefallener Arm">Gefallener Arm</option>
+            <option value="Gefängnisinsel 2">Gefängnisinsel 2</option>
+    </select>
+
+<label for="harmony">Harmonie:</label>
+<select name="harmony" id="harmonyInput" onchange="Filter()">
+    <option value="">Bitte wählen</option>
+    <option value="Gelb">Gelb</option>
+    <option value="Gruen">Grün</option>
+    <option value="Lila">Lila</option>
+    <option value="Rot">Rot</option>
+</select>
+
+<br />
+<br />
+
+<noscript>
+    </div>
+</noscript>
+
+<table id="myTable" class="guide-table" align="center">
 	<tr class="tablehead">
 		<td>
 			Name:
@@ -268,7 +367,7 @@
 			<img height="40" src="/images/personicons/1348591251.png" alt="Reyn" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -295,7 +394,7 @@
 			<img height="40" src="/images/personicons/1348591263.png" alt="Fiora" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gelb.png" />
+			<img alt="Gelb" src="/images/gelb.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -322,7 +421,7 @@
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -349,7 +448,7 @@
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -376,7 +475,7 @@
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -403,7 +502,7 @@
 			<img height="40" src="/images/personicons/1348591323.png" alt="Person 7" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -430,7 +529,7 @@
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Kolonie 9
@@ -457,7 +556,7 @@
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Tephra-Höhle
@@ -485,7 +584,7 @@ Knochenkorridor
 			<img height="40" src="/images/personicons/1348591251.png" alt="Reyn" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Tephra-Höhle
@@ -512,7 +611,7 @@ Knochenkorridor
 			<img height="40" src="/images/personicons/1348591323.png" alt="Person 7" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Tephra-Höhle
@@ -539,7 +638,7 @@ Knochenkorridor
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -566,7 +665,7 @@ Knochenkorridor
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -593,7 +692,7 @@ Knochenkorridor
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -621,7 +720,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591251.png" alt="Reyn" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -648,7 +747,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -675,7 +774,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -702,7 +801,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Kolonie 6
@@ -729,7 +828,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Bein des Bionis
@@ -756,7 +855,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Bein des Bionis
@@ -783,7 +882,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Bein des Bionis
@@ -810,7 +909,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Bein des Bionis
@@ -837,7 +936,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Bein des Bionis
@@ -864,7 +963,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Äthermine
@@ -891,7 +990,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Äthermine
@@ -918,7 +1017,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Sumpf von Satorl
@@ -945,7 +1044,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Sumpf von Satorl
@@ -972,7 +1071,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Sumpf von Satorl
@@ -999,7 +1098,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Wald von Makna
@@ -1026,7 +1125,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Wald von Makna
@@ -1053,7 +1152,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Wald von Makna
@@ -1080,7 +1179,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Grenzdorf
@@ -1107,7 +1206,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Grenzdorf
@@ -1134,7 +1233,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Grenzdorf
@@ -1161,7 +1260,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Grenzdorf
@@ -1188,7 +1287,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Grenzdorf
@@ -1215,7 +1314,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Grenzdorf
@@ -1242,7 +1341,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Eryth-Meer
@@ -1270,7 +1369,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Eryth-Meer
@@ -1297,7 +1396,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Eryth-Meer
@@ -1324,7 +1423,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Eryth-Meer
@@ -1351,7 +1450,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Alcamoth
@@ -1378,7 +1477,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Alcamoth
@@ -1405,7 +1504,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Alcamoth
@@ -1432,7 +1531,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Alcamoth
@@ -1459,7 +1558,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Alcamoth
@@ -1486,7 +1585,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Alcamoth
@@ -1513,7 +1612,7 @@ Transportaufzug
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Gruft der Hochentia
@@ -1541,7 +1640,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gruft der Hochentia
@@ -1568,7 +1667,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Berg Valak
@@ -1595,7 +1694,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Berg Valak
@@ -1622,7 +1721,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591323.png" alt="Person 7" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Berg Valak
@@ -1649,7 +1748,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591323.png" alt="Person 7" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1676,7 +1775,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1703,7 +1802,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/gruen.png" />
+			<img alt="Gruen" src="/images/gruen.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1730,7 +1829,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591288.png" alt="Dunban" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1757,7 +1856,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1784,7 +1883,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1811,7 +1910,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/lila.png" />
+			<img alt="Lila" src="/images/lila.png" />
 		</td>
 		<td>
 			Gefallener Arm
@@ -1838,7 +1937,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591278.png" alt="Sharla" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Inneres des Bionis
@@ -1865,7 +1964,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Inneres des Bionis
@@ -1892,7 +1991,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591234.png" alt="Shulk" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefängnisinsel 2
@@ -1919,7 +2018,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591363.png" alt="Riki" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefängnisinsel 2
@@ -1946,7 +2045,7 @@ Prüfungsraum
 			<img height="40" src="/images/personicons/1348591346.png" alt="Melia" />
 		</td>
 		<td style="text-align:center;">
-			<img alt="gelb" src="/images/rot.png" />
+			<img alt="Rot" src="/images/rot.png" />
 		</td>
 		<td>
 			Gefängnisinsel 2
